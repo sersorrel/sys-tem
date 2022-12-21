@@ -39,7 +39,6 @@
       inherit system;
       specialArgs = { inherit inputs; };
       modules = [ inputs.sys.nixosModules.default ({ inputs, lib, ... }: {
-        system.configurationRevision = lib.mkIf (inputs.self ? rev) inputs.self.rev;
         system.stateVersion = "22.11";
       }) ];
     };
