@@ -22,7 +22,8 @@
     darwinConfigurations.default = inputs.darwin.lib.darwinSystem {
       inherit system;
       inputs = { inherit inputs; };
-      modules = [ inputs.sys.darwinModules.default ({ config, ... }: {
+      modules = [ ({ config, ... }: {
+        imports = [ inputs.sys.darwinModules.default ];
         _module.args = { unstable = import inputs.nixpkgs-unstable { inherit system; inherit (config.nixpkgs) config overlays; }; };
         system.stateVersion = "4";
       }) ];
@@ -30,7 +31,8 @@
     homeConfigurations.default = inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = inputs.nixpkgs.legacyPackages.${system};
       extraSpecialArgs = { inherit inputs; };
-      modules = [ inputs.sys.homeModules.default ({ config, ... }: {
+      modules = [ ({ config, ... }: {
+        imports = [ inputs.sys.homeModules.default ];
         _module.args = { unstable = import inputs.nixpkgs-unstable { inherit system; inherit (config.nixpkgs) config overlays; }; };
         home.homeDirectory = "..."; # TODO: update me!
         home.username = "..."; # TODO: update me!
@@ -40,7 +42,8 @@
     nixosConfigurations.default = inputs.nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = { inherit inputs; };
-      modules = [ inputs.sys.nixosModules.default ({ config, ... }: {
+      modules = [ ({ config, ... }: {
+        imports = [ inputs.sys.nixosModules.default ];
         _module.args = { unstable = import inputs.nixpkgs-unstable { inherit system; inherit (config.nixpkgs) config overlays; }; };
         system.stateVersion = "22.11";
       }) ];
