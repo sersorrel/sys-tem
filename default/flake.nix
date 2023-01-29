@@ -25,7 +25,7 @@
       modules = [ ({ config, ... }: {
         imports = [ inputs.sys.darwinModules.default ];
         _module.args = { unstable = import inputs.nixpkgs-unstable { inherit system; inherit (config.nixpkgs) config overlays; }; };
-        system.stateVersion = "4";
+        system.stateVersion = 4;
       }) ];
     };
     homeConfigurations.default = inputs.home-manager.lib.homeManagerConfiguration {
