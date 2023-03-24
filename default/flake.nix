@@ -13,7 +13,6 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/..."; # TODO: update me! (e.g. `nixos-unstable`, `nixpkgs-unstable`)
 
     sys.url = "github:sersorrel/sys";
-    sys.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: let
